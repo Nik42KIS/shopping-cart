@@ -6,11 +6,16 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { Store } from './components/Store.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element:<App/>
+  },
+  {
+    path:"store",
+    element:<Store/>
   }
 ])
 

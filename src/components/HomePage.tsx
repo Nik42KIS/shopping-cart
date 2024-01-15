@@ -6,8 +6,6 @@ export const HomePage = () => {
   return (
     <div>
         HomePage
-        <Store/>
-        <Cart/>
     </div>
   )
 }

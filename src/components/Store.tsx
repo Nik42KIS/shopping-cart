@@ -30,7 +30,7 @@ export const Store = () => {
                         <p>{item.price}</p>
                         <span>{item.description}</span>
                     </li>
-                )
+                ) 
             } )}
         </ul>
     </div>
