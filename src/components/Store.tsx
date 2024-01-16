@@ -28,7 +28,7 @@ export const Store = () => {
                         <img src={item.image} alt="" />
                         <p>{item.title}</p>
                         <p>{item.price}</p>
-                        <span>{item.description}</span>
+                        <button>Add to Cart</button>
                     </li>
                 ) 
             } )}
