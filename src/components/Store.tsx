@@ -13,7 +13,7 @@ export const Store = () => {
     const [ items, setItems] = useState<Item[]>([])
 
     useEffect(()=>{
-     fetch('https://fakestoreapi.com/products/category/electronics?limit=10')
+     fetch('https://fakestoreapi.com/products/category/electronics')
         .then((res:Response)=>res.json())
         .then((json:Item[])=> setItems(json))
     
