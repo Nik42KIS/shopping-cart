@@ -18,13 +18,14 @@ export interface Item{
 export const Router = () => {
 
   const [ items, setItems] = useState<Item[]>([])
+  const [ cartItems, setCartItems] = useState<Item[]>([])
     const router = createBrowserRouter([
         {
           path: "/",
           element:<App/>,
           errorElement: <ErrorPage />,
           children:[
-            {path:'store', element:<Store items={items} setItems={setItems}/>},
+            {path:'store', element:<Store items={items} setItems={setItems} cartItems={cartItems} setCartItems={setCartItems}/>},
             {path:'/', element:<HomePage/>}
           ]
         },
