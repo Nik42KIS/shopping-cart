@@ -4,18 +4,27 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { Store } from './Store.tsx';
+import {  Store } from './Store.tsx';
 import { HomePage } from './HomePage.tsx';
 import { ErrorPage } from './ErrorPage.tsx';
-
+import { useState } from 'react';
+export interface Item{
+  id:number,
+  image:string,
+  title:string,
+  price:number,
+  description:string
+}
 export const Router = () => {
+
+  const [ items, setItems] = useState<Item[]>([])
     const router = createBrowserRouter([
         {
           path: "/",
           element:<App/>,
           errorElement: <ErrorPage />,
           children:[
-            {path:'store', element:<Store/>},
+            {path:'store', element:<Store items={items} setItems={setItems}/>},
             {path:'/', element:<HomePage/>}
           ]
         },

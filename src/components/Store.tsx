@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
-export const Store = () => {
+import {Item} from './Router'
+export const Store = ({items, setItems}:{items: Item[], setItems: React.Dispatch<React.SetStateAction<Item[]>>}) => {
 
-    interface Item{
-        id:number,
-        image:string,
-        title:string,
-        price:number,
-        description:string
-    }
-
-    const [ items, setItems] = useState<Item[]>([])
 
     useEffect(()=>{
      fetch('https://fakestoreapi.com/products/category/electronics')
