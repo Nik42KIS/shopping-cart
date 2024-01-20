@@ -13,7 +13,7 @@ export interface Item{
   image:string,
   title:string,
   price:number,
-  description:string
+  description?:string
 }
 export const Router = () => {
 
@@ -22,7 +22,7 @@ export const Router = () => {
     const router = createBrowserRouter([
         {
           path: "/",
-          element:<App/>,
+          element:<App cartItems={cartItems} setCartItems={setCartItems}/>,
           errorElement: <ErrorPage />,
           children:[
             {path:'store', element:<Store items={items} setItems={setItems} cartItems={cartItems} setCartItems={setCartItems}/>},

@@ -1,6 +1,7 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
 
 export const Header = () => {
   const HeaderWrap = styled.header`
@@ -56,6 +57,7 @@ const Logo = styled(NavLink)`
       <Navigation>
         <NavLink to='/'>Home</NavLink>
         <NavLink to='store'>Store</NavLink>
+        <button>Cart</button>
       </Navigation>
      
     </HeaderWrap>
