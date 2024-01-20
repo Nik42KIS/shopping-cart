@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import {Item} from './Router'
 import styled from 'styled-components'
 
-const ProductList = styled.ul`
+export const ProductList = styled.ul`
     display:flex;
     flex-wrap:wrap;
     justify-content:space-between;

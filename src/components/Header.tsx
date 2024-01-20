@@ -2,8 +2,17 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+interface HeaderProps{
+  isCartActive: boolean;
+  setIsCartActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export const Header = () => {
+export const Header = ({isCartActive, setIsCartActive}:HeaderProps) => {
+
+  const showCart = ()=>{
+    setIsCartActive(true)
+   }
+
   const HeaderWrap = styled.header`
   padding:0 50px;
   height:80px;
@@ -50,6 +59,7 @@ const Logo = styled(NavLink)`
 
   }
 `
+ 
   return (
     <HeaderWrap>
       <Logo to='/'>LOGOSHOP</Logo>
@@ -57,7 +67,7 @@ const Logo = styled(NavLink)`
       <Navigation>
         <NavLink to='/'>Home</NavLink>
         <NavLink to='store'>Store</NavLink>
-        <button>Cart</button>
+        <button onClick={showCart}>Cart</button>
       </Navigation>
      
     </HeaderWrap>

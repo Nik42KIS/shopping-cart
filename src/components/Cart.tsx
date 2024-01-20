@@ -2,7 +2,9 @@ import React from 'react';
 import { CartProps } from '../App';
 import { Item } from './Router';
 
-export const Cart = ({ cartItems, setCartItems }: CartProps) => {
+export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive}: CartProps) => {
+ 
+ 
   return (
     <div>
       <ul>

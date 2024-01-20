@@ -19,10 +19,11 @@ export const Router = () => {
 
   const [ items, setItems] = useState<Item[]>([])
   const [ cartItems, setCartItems] = useState<Item[]>([])
+  const [ isCartActive, setIsCartActive] = useState(false)
     const router = createBrowserRouter([
         {
           path: "/",
-          element:<App cartItems={cartItems} setCartItems={setCartItems}/>,
+          element:<App isCartActive={isCartActive} setIsCartActive={setIsCartActive} cartItems={cartItems} setCartItems={setCartItems}/>,
           errorElement: <ErrorPage />,
           children:[
             {path:'store', element:<Store items={items} setItems={setItems} cartItems={cartItems} setCartItems={setCartItems}/>},
