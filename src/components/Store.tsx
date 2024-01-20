@@ -1,7 +1,22 @@
 import React, { useEffect } from 'react'
 
 import {Item} from './Router'
+import styled from 'styled-components'
 
+const ProductList = styled.ul`
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+`
+const ProductItem = styled.li`
+    height:400px;
+    width:400px;
+    img{
+        height:250px;
+        
+    }
+`
 
 export const Store = ({items, setItems, cartItems, setCartItems}:{items: Item[], setItems: React.Dispatch<React.SetStateAction<Item[]>>,cartItems:Item[], setCartItems: React.Dispatch<React.SetStateAction<Item[]>>}) => {
 
@@ -23,18 +38,18 @@ export const Store = ({items, setItems, cartItems, setCartItems}:{items: Item[],
 
   return (
     <div>
-        <ul>
+        <ProductList>
             {items && items.map((item:Item) =>{
                 return (
-                    <li key={item.id} id={item.id.toString()}>
+                    <ProductItem key={item.id} id={item.id.toString()}>
                         <img src={item.image} alt="" />
                         <p>{item.title}</p>
                         <p>{item.price}</p>
                         <button  onClick={(e)=>addToCart(e)}>Add to Cart</button>
-                    </li>
+                    </ProductItem>
                 ) 
             } )}
-        </ul>
+        </ProductList>
     </div>
    
   )

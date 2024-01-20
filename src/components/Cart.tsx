@@ -1,14 +1,22 @@
-import React from 'react'
-import { CartProps } from '../App'
-import { Item } from './Router'
+import React from 'react';
+import { CartProps } from '../App';
+import { Item } from './Router';
 
-export const Cart = ({cartItems, setCartItems}:CartProps) => {
+export const Cart = ({ cartItems, setCartItems }: CartProps) => {
   return (
     <div>
-     { cartItems.map((item:Item)=>{
-        return <span>{item.title}</span>
-      })
-      }
+      <ul>
+        {cartItems.map((item: Item) => {
+          return (
+            <li key={item.id} id={item.id.toString()}>
+              <img src={item.image} alt="" />
+              <p>{item.title}</p>
+              <p>{item.price}</p>
+              <button>Remove</button>
+            </li>
+          );
+        })}
+      </ul>
     </div>
-  )
-}
+  );
+};
