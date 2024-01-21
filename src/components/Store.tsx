@@ -12,6 +12,7 @@ export const ProductList = styled.ul`
 const ProductItem = styled.li`
     height:400px;
     width:400px;
+    list-style-type:none;
     img{
         height:250px;
         

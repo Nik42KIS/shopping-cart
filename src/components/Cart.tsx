@@ -14,26 +14,77 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive}: 
   left:0;
   display:flex;
   justify-content: flex-end;
+   
+  div{
+    height:100vh;
+    background-color:#fdfdfd;
+    width:640px;
+    overflow:auto;
+  }
   `
   const CartList = styled.ul`
   display:flex;
   flex-direction:column;
+  gap:5px;
+
+  `
+  const CartListItem = styled.li`
+  height:185px;
+  margin:10px;
+  display:grid;
+  grid-template-columns: 1fr 350px;
+  background-color: #ffb8b8;
+  border-radius:10px;
+  padding:10px;
+  list-style-type:none;
+  img{
+    height:175px;
+    max-width:220px;
+    margin:0 auto;
+  }
+  `
+  const ItemInfo = styled.span`
+  
+  h2{
+    font-size:1.3rem;
+  }
+  p{
+    font-size:1.6rem;
+    margin:12px 0;
+    font-style:italic;
+    font-weight:bold;
+    color: #006d24;
+  }
+  input{
+    height:30px;
+    width: 60px;
+    font-size:1.3rem;
+  }
+  span{
+    font-size:1.2rem;
+  }
   `
   return (
     <CartWrapper onClick={()=>setIsCartActive(false)}>
       <div onClick={(e)=>e.stopPropagation()} >
-        <ul>
+        <CartList>
         {cartItems.map((item: Item) => {
           return (
-            <li key={item.id} id={item.id.toString()}>
+            <CartListItem key={item.id} id={item.id.toString()}>
               <img src={item.image} alt="" />
-              <p>{item.title}</p>
-              <p>{item.price}</p>
-              <button>Remove</button>
-            </li>
+              <ItemInfo>
+              <h2>{item.title}</h2>
+              <p>{item.price}$</p>
+              <span>
+                Count: <input value={1} max={99} type="number" />
+              </span>
+              
+              </ItemInfo>
+            
+            </CartListItem>
           );
         })}
-      </ul>
+      </CartList>
       </div>
       
     </CartWrapper>
