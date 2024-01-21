@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { Item } from './components/Router';
 import { Cart } from './components/Cart';
 
+
 export interface CartProps {
   cartItems: Item[];
   setCartItems: React.Dispatch<React.SetStateAction<Item[]>>;
@@ -14,6 +15,9 @@ export interface CartProps {
 }
 
 function App({ cartItems, setCartItems, isCartActive, setIsCartActive }: CartProps) {
+
+ 
+
   return (
     <>
       <Header 
