@@ -15,10 +15,13 @@ export interface Item{
   price:number,
   description?:string
 }
+export interface CartItem extends Item{
+count:number
+}
 export const Router = () => {
 
   const [ items, setItems] = useState<Item[]>([])
-  const [ cartItems, setCartItems] = useState<Item[]>([])
+  const [ cartItems, setCartItems] = useState<CartItem[]>([])
   const [ isCartActive, setIsCartActive] = useState(false)
     const router = createBrowserRouter([
         {

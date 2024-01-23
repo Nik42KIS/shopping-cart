@@ -68,7 +68,8 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive}: 
     <CartWrapper onClick={()=>setIsCartActive(false)}>
       <div onClick={(e)=>e.stopPropagation()} >
         <CartList>
-        {cartItems.map((item: Item) => {
+        {cartItems 
+        ? cartItems.map((item: Item) => {
           return (
             <CartListItem key={item.id} id={item.id.toString()}>
               <img src={item.image} alt="" />
@@ -83,7 +84,9 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive}: 
             
             </CartListItem>
           );
-        })}
+        })
+      : <div>Cart is clear</div>
+      }
       </CartList>
       </div>
       

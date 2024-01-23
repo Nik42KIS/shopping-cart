@@ -3,13 +3,13 @@ import { Header } from './components/Header';
 
 import { Footer } from './components/Footer';
 import { Outlet } from 'react-router-dom';
-import { Item } from './components/Router';
+import { CartItem, Item } from './components/Router';
 import { Cart } from './components/Cart';
 
 
 export interface CartProps {
-  cartItems: Item[];
-  setCartItems: React.Dispatch<React.SetStateAction<Item[]>>;
+  cartItems: CartItem[];
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   isCartActive: boolean;
   setIsCartActive: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import {Item} from './Router'
+import {CartItem, Item} from './Router'
 import styled from 'styled-components'
 
 export const ProductList = styled.ul`
@@ -19,7 +19,7 @@ const ProductItem = styled.li`
     }
 `
 
-export const Store = ({items, setItems, cartItems, setCartItems}:{items: Item[], setItems: React.Dispatch<React.SetStateAction<Item[]>>,cartItems:Item[], setCartItems: React.Dispatch<React.SetStateAction<Item[]>>}) => {
+export const Store = ({items, setItems, cartItems, setCartItems}:{items: Item[], setItems: React.Dispatch<React.SetStateAction<Item[]>>,cartItems:CartItem[], setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>}) => {
 
 
     useEffect(()=>{
@@ -30,10 +30,13 @@ export const Store = ({items, setItems, cartItems, setCartItems}:{items: Item[],
     },[])
 
     const addToCart = (event:React.MouseEvent)=>{
-        console.log(event.target)
+
         const target = event.target as HTMLButtonElement
-        const currentId:string | undefined = target.parentElement?.id 
-        const updatedArray = [...cartItems, ...items.filter(((item:Item) => item.id === Number(currentId) ))]
+        const currentId:string | undefined = target.parentElement?.id ;
+        // console.log(items.filter((item:Item) => item.id === Number(currentId) ))
+        const filteredElem:Item = items.filter((item:Item) => item.id === Number(currentId) )[0];
+        const newCartElem:CartItem = {...filteredElem,count:1}
+        const updatedArray = [...cartItems, newCartElem ]
         setCartItems(updatedArray)
     }
 
