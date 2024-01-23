@@ -12,9 +12,11 @@ export interface CartProps {
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   isCartActive: boolean;
   setIsCartActive: React.Dispatch<React.SetStateAction<boolean>>;
+  countItems:number;
+  // setCountItems:React.Dispatch<React.SetStateAction<number>>;
 }
 
-function App({ cartItems, setCartItems, isCartActive, setIsCartActive }: CartProps) {
+function App({ cartItems, setCartItems, isCartActive, setIsCartActive, countItems }: CartProps) {
 
  
 

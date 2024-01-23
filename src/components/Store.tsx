@@ -14,12 +14,18 @@ const ProductItem = styled.li`
     width:400px;
     list-style-type:none;
     img{
-        height:250px;
-        
+        height:250px;      
     }
 `
-
-export const Store = ({items, setItems, cartItems, setCartItems}:{items: Item[], setItems: React.Dispatch<React.SetStateAction<Item[]>>,cartItems:CartItem[], setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>}) => {
+interface StoreProps  {
+    items: Item[], 
+    setItems: React.Dispatch<React.SetStateAction<Item[]>>,
+    cartItems:CartItem[], 
+    setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>,
+    countItems:number,
+    setCountItems:React.Dispatch<React.SetStateAction<number>>,
+}
+export const Store = ({items, setItems, cartItems, setCartItems, countItems, setCountItems}:StoreProps ) => {
 
 
     useEffect(()=>{
@@ -35,9 +41,23 @@ export const Store = ({items, setItems, cartItems, setCartItems}:{items: Item[],
         const currentId:string | undefined = target.parentElement?.id ;
         // console.log(items.filter((item:Item) => item.id === Number(currentId) ))
         const filteredElem:Item = items.filter((item:Item) => item.id === Number(currentId) )[0];
+
+        const tempArr = [...cartItems]
+            const foundedElement = tempArr.findIndex(item => item.id === filteredElem.id)
+         if( foundedElement != -1){
+            cartItems.forEach((element,index)=>{
+                if(element.id === filteredElem.id){
+                    tempArr[index].count++
+                    setCartItems(tempArr)
+    
+                   
+                } 
+            })
+    } else{
         const newCartElem:CartItem = {...filteredElem,count:1}
-        const updatedArray = [...cartItems, newCartElem ]
-        setCartItems(updatedArray)
+        const updatedArray = [...tempArr, newCartElem ]
+        setCartItems(updatedArray)}
+        
     }
 
   return (

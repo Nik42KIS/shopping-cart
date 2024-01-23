@@ -1,6 +1,6 @@
 import React from 'react';
 import { CartProps } from '../App';
-import { Item } from './Router';
+import { CartItem, Item } from './Router';
 import styled from 'styled-components';
 
 export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive}: CartProps) => {
@@ -69,7 +69,7 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive}: 
       <div onClick={(e)=>e.stopPropagation()} >
         <CartList>
         {cartItems 
-        ? cartItems.map((item: Item) => {
+        ? cartItems.map((item: CartItem) => {
           return (
             <CartListItem key={item.id} id={item.id.toString()}>
               <img src={item.image} alt="" />
@@ -77,7 +77,7 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive}: 
               <h2>{item.title}</h2>
               <p>{item.price}$</p>
               <span>
-                Count: <input value={1} max={99} type="number" />
+                Count: <input value={item.count} max={99} type="number" />
               </span>
               
               </ItemInfo>
