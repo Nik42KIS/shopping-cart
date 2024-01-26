@@ -69,16 +69,14 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
     const filteredElem: Item = cartItems.filter((item: CartItem) => item.id === Number(id))[0];
 
     const tempArr = [...cartItems];
-    const foundedElement = tempArr.findIndex((item: CartItem) => item.id === filteredElem.id);
-
-    if (foundedElement != -1) {
+ 
       cartItems.forEach((element, index) => {
         if (element.id === filteredElem.id) {
           tempArr[index].count++;
           setCartItems(tempArr);
         }
       });
-    }
+    
   }
 
   return (
