@@ -39,18 +39,16 @@ export const Store = ({items, setItems, cartItems, setCartItems, countItems, set
 
         const target = event.target as HTMLButtonElement
         const currentId:string | undefined = target.parentElement?.id ;
-        // console.log(items.filter((item:Item) => item.id === Number(currentId) ))
         const filteredElem:Item = items.filter((item:Item) => item.id === Number(currentId) )[0];
 
         const tempArr = [...cartItems]
-            const foundedElement = tempArr.findIndex(item => item.id === filteredElem.id)
+        const foundedElement = tempArr.findIndex(item => item.id === filteredElem.id)
+        
          if( foundedElement != -1){
             cartItems.forEach((element,index)=>{
                 if(element.id === filteredElem.id){
                     tempArr[index].count++
-                    setCartItems(tempArr)
-    
-                   
+                    setCartItems(tempArr)  
                 } 
             })
     } else{
