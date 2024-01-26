@@ -115,18 +115,18 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
                     <p>{item.price}$</p>
                     <span>
                       <button onClick={(e) => incrementCount(e)}>+</button>
-                      <input value={item.count} />
+                      <input defaultValue={item.count} />
                       <button onClick={(e)=>decrementCount(e)}>-</button>
                     </span>
                   </ItemInfo>
                 </CartListItem>
               );
             })
-          ) : (
-            <div>Cart is clear</div>
-          )}
+          ) 
+          : <div>Cart is empty</div>
+          }
         </CartList>
       </div>
     </CartWrapper>
-  );
+  ) 
 };

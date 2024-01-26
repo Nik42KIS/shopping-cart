@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {CartItem, Item} from './Router'
 import styled from 'styled-components'
@@ -8,6 +8,11 @@ export const ProductList = styled.ul`
     flex-wrap:wrap;
     justify-content:space-between;
     align-items:center;
+`
+const Loading = styled.div`
+    font-size:5rem;
+    text-align:center;
+    margin: 200px 0;
 `
 const ProductItem = styled.li`
     height:400px;
@@ -27,12 +32,13 @@ interface StoreProps  {
 }
 export const Store = ({items, setItems, cartItems, setCartItems, countItems, setCountItems}:StoreProps ) => {
 
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
      fetch('https://fakestoreapi.com/products/category/electronics')
         .then((res:Response)=>res.json())
         .then((json:Item[])=> setItems(json))
-    
+        .finally(()=> setIsLoading(false))
     },[])
 
     const addToCart = (event:React.MouseEvent)=>{
@@ -58,6 +64,7 @@ export const Store = ({items, setItems, cartItems, setCartItems, countItems, set
         
     }
 
+    if(isLoading) return (<Loading>Loading...</Loading>)
   return (
     <div>
         <ProductList>
