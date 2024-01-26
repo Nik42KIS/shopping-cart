@@ -65,13 +65,15 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
   function incrementCount(event: React.MouseEvent) {
     const target = event.target as HTMLButtonElement;
     const id: string | undefined  = target.closest('li')?.id;
-    // const currentId: string | undefined = target.parentElement?.id;
     const filteredElem: Item = cartItems.filter((item: CartItem) => item.id === Number(id))[0];
-
     const tempArr = [...cartItems];
  
       cartItems.forEach((element, index) => {
         if (element.id === filteredElem.id) {
+          if(tempArr[index].count >= 99){
+            tempArr[index].count = 99;
+            return
+          }
           tempArr[index].count++;
           setCartItems(tempArr);
         }
@@ -79,6 +81,26 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
     
   }
 
+  function decrementCount(event: React.MouseEvent){
+    const target = event.target as HTMLButtonElement;
+    const id: string | undefined  = target.closest('li')?.id;
+    const filteredElem: Item = cartItems.filter((item: CartItem) => item.id === Number(id))[0];
+    const tempArr = [...cartItems];
+ 
+      cartItems.forEach((element, index) => {
+        if (element.id === filteredElem.id) {
+          if(tempArr[index].count === 1){
+           tempArr.splice(index,1)
+         
+          } else{
+            tempArr[index].count--;
+          }
+          
+          setCartItems(tempArr);
+        }
+      });
+    
+  }
   return (
     <CartWrapper onClick={() => setIsCartActive(false)}>
       <div onClick={(e) => e.stopPropagation()}>
@@ -94,7 +116,7 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
                     <span>
                       <button onClick={(e) => incrementCount(e)}>+</button>
                       <input value={item.count} />
-                      <button>-</button>
+                      <button onClick={(e)=>decrementCount(e)}>-</button>
                     </span>
                   </ItemInfo>
                 </CartListItem>
