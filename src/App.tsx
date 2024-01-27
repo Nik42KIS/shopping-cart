@@ -3,7 +3,7 @@ import { Header } from './components/Header';
 
 import { Footer } from './components/Footer';
 import { Outlet } from 'react-router-dom';
-import { CartItem, Item } from './components/Router';
+import { CartItem } from './components/Router';
 import { Cart } from './components/Cart';
 
 
@@ -12,24 +12,25 @@ export interface CartProps {
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   isCartActive: boolean;
   setIsCartActive: React.Dispatch<React.SetStateAction<boolean>>;
-  countItems:number;
+  recountPrice: ()=>void;
+    totalPrice:number;
   // setCountItems:React.Dispatch<React.SetStateAction<number>>;
 }
 
-function App({ cartItems, setCartItems, isCartActive, setIsCartActive, countItems }: CartProps) {
+function App({ cartItems, setCartItems, isCartActive, setIsCartActive, recountPrice,totalPrice }: CartProps) {
 
  
 
   return (
     <>
       <Header 
-       cartItems={cartItems}
-       setCartItems={setCartItems}
        isCartActive={isCartActive}
         setIsCartActive={setIsCartActive}
       />
       <Outlet />
      {isCartActive && <Cart
+        recountPrice={recountPrice}
+        totalPrice={totalPrice}
         isCartActive={isCartActive}
         setIsCartActive={setIsCartActive}
         cartItems={cartItems}

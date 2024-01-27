@@ -3,7 +3,10 @@ import { CartProps } from '../App';
 import { CartItem, Item } from './Router';
 import styled from 'styled-components';
 
-export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }: CartProps) => {
+export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice, recountPrice}: CartProps) => {
+
+  
+
   const CartWrapper = styled.div`
     position: fixed;
     height: 100vh;
@@ -12,7 +15,9 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
     top: 0;
     left: 0;
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+    align-items:flex-end;
+    flex-direction:column;
 
     div {
       height: 100vh;
@@ -27,7 +32,6 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
     gap: 5px;
   `;
   const CartListItem = styled.li`
-    height: 185px;
     margin: 10px;
     display: grid;
     grid-template-columns: 1fr 350px;
@@ -61,7 +65,9 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
       font-size: 1.2rem;
     }
   `;
-
+  const TotalPrice = styled.div`
+  height:150px;
+  `
   function incrementCount(event: React.MouseEvent) {
     const target = event.target as HTMLButtonElement;
     const id: string | undefined  = target.closest('li')?.id;
@@ -77,8 +83,9 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
           tempArr[index].count++;
           setCartItems(tempArr);
         }
-      });
-    
+      }
+      )
+      recountPrice()
   }
 
   function decrementCount(event: React.MouseEvent){
@@ -94,13 +101,16 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
          
           } else{
             tempArr[index].count--;
+            recountPrice()
           }
           
           setCartItems(tempArr);
+          
         }
-      });
-    
-  }
+      })
+      recountPrice()
+    }
+ 
   return (
     <CartWrapper onClick={() => setIsCartActive(false)}>
       <div onClick={(e) => e.stopPropagation()}>
@@ -115,7 +125,7 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
                     <p>{item.price}$</p>
                     <span>
                       <button onClick={(e) => incrementCount(e)}>+</button>
-                      <input defaultValue={item.count} />
+                      <input  defaultValue={item.count} />
                       <button onClick={(e)=>decrementCount(e)}>-</button>
                     </span>
                   </ItemInfo>
@@ -126,7 +136,9 @@ export const Cart = ({ cartItems, setCartItems, isCartActive, setIsCartActive }:
           : <div>Cart is empty</div>
           }
         </CartList>
+        {cartItems && <TotalPrice>Total price: {totalPrice}</TotalPrice>}
       </div>
+      
     </CartWrapper>
   ) 
 };
