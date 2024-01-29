@@ -70,6 +70,8 @@ export const Store = ({
     recountPrice();
   };
 
+  
+
   if (isLoading) return <Loading>Loading...</Loading>;
   return (
     <div>

@@ -101,7 +101,7 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice, reco
          
           } else{
             tempArr[index].count--;
-            recountPrice()
+         
           }
           
           setCartItems(tempArr);

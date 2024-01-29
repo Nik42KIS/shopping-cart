@@ -7,7 +7,7 @@ import {
 import {  Store } from './Store.tsx';
 import { HomePage } from './HomePage.tsx';
 import { ErrorPage } from './ErrorPage.tsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 export interface Item{
   id:number,
   image:string,
@@ -36,6 +36,9 @@ export const Router = () => {
      setTotalPrice(price)
    }
   
+   useEffect(()=>{
+    recountPrice()
+   },[cartItems])
 
     const router = createBrowserRouter([
         {
