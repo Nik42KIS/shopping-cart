@@ -3,7 +3,7 @@ import { CartProps } from '../App';
 import { CartItem, Item } from './Router';
 import styled from 'styled-components';
 
-export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice, recountPrice}: CartProps) => {
+export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice}: CartProps) => {
 
   
 
@@ -85,7 +85,6 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice, reco
         }
       }
       )
-      recountPrice()
   }
 
   function decrementCount(event: React.MouseEvent){
@@ -108,14 +107,13 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice, reco
           
         }
       })
-      recountPrice()
     }
  
   return (
     <CartWrapper onClick={() => setIsCartActive(false)}>
       <div onClick={(e) => e.stopPropagation()}>
         <CartList>
-          {cartItems ? (
+          {Object.keys(cartItems).length ? (
             cartItems.map((item: CartItem) => {
               return (
                 <CartListItem key={item.id} id={item.id.toString()}>

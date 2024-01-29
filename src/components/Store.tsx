@@ -35,7 +35,6 @@ export const Store = ({
   setItems,
   cartItems,
   setCartItems,
-  recountPrice,
 
 }: StoreProps) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -67,7 +66,7 @@ export const Store = ({
       const updatedArray = [...tempArr, newCartElem];
       setCartItems(updatedArray);
     }
-    recountPrice();
+
   };
 
   
