@@ -10,6 +10,7 @@ export const ProductList = styled.ul`
   align-items: center;
 `;
 const Loading = styled.div`
+    height:700px;
   font-size: 5rem;
   text-align: center;
   margin: 200px 0;
@@ -21,7 +22,10 @@ const ProductItem = styled.li`
   img {
     height: 250px;
   }
-`;
+`
+const StoreWrap = styled.section`
+    
+`
 interface StoreProps {
   items: Item[];
   setItems: React.Dispatch<React.SetStateAction<Item[]>>;
@@ -37,6 +41,7 @@ export const Store = ({
   setCartItems,
 
 }: StoreProps) => {
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -73,7 +78,7 @@ export const Store = ({
 
   if (isLoading) return <Loading>Loading...</Loading>;
   return (
-    <div>
+    <StoreWrap>
       <ProductList>
         {items &&
           items.map((item: Item) => {
@@ -87,6 +92,6 @@ export const Store = ({
             );
           })}
       </ProductList>
-    </div>
+    </StoreWrap>
   );
 };

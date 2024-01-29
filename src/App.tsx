@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { Outlet } from 'react-router-dom';
 import { CartItem } from './components/Router';
 import { Cart } from './components/Cart';
+import styled from 'styled-components';
 
 
 export interface CartProps {
@@ -19,7 +20,12 @@ export interface CartProps {
 
 function App({ cartItems, setCartItems, isCartActive, setIsCartActive, recountPrice,totalPrice }: CartProps) {
 
- 
+  // const Wrapper = styled.div`
+  //   display: grid;
+  //   height:100vh;
+  //   grid-template-rows:80px 1fr 70px;
+  
+  // `
 
   return (
     <>
@@ -28,6 +34,7 @@ function App({ cartItems, setCartItems, isCartActive, setIsCartActive, recountPr
         setIsCartActive={setIsCartActive}
       />
       <Outlet />
+      <Footer />
      {isCartActive && <Cart
         recountPrice={recountPrice}
         totalPrice={totalPrice}
@@ -36,7 +43,6 @@ function App({ cartItems, setCartItems, isCartActive, setIsCartActive, recountPr
         cartItems={cartItems}
         setCartItems={setCartItems}
       />}
-      <Footer />
     </>
   );
 }
