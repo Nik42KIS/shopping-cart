@@ -1,75 +1,83 @@
-
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-interface HeaderProps{
+import CART_IMG from '../assets/icons/shopping-cart.png';
+interface HeaderProps {
   isCartActive: boolean;
   setIsCartActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Header = ({isCartActive, setIsCartActive}:HeaderProps) => {
-
-  const showCart = ()=>{
-    setIsCartActive(true)
-   }
+export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
+  const showCart = () => {
+    setIsCartActive(true);
+  };
 
   const HeaderWrap = styled.header`
-  padding:0 50px;
-  height:80px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size: 1.5em;
-  text-align: center;
-  color: #BF4F74;
-  background-color:grey;
-`;
-const Input = styled.input`
-  width:400px;
-  height:30px;
-  border-radius:5px;
-  padding:5px;
-  font-size:1.3rem;
-  transition:.2s;
-  &:focus{
-    outline:none;
-    width:600px;
-  }
-`
+    padding: 0 50px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+    text-align: center;
+  `;
+  const Input = styled.input`
+    width: 400px;
+    height: 30px;
+    border-radius: 14px;
+    padding: 5px;
+    font-size: 1.3rem;
+    transition: 0.2s;
+    &:focus {
+      outline: none;
+      width: 600px;
+    }
+  `;
 
-const Navigation = styled.nav`
-  width:220px;
-  display:flex;
-  justify-content:space-between;
-`
-const NavLink = styled(Link)`
-  text-decoration:none;
-  color:#fdfdfd;
-  font-size:1.8rem;
-  &:hover{
-    text-decoration:underline;
-  }
-`
-const Logo = styled(NavLink)`
-  font-size:2.3rem;
-  font-weight:bold;
-  color: #fdfdfd;
-  &:hover{
-    text-decoration:none;
+  const Navigation = styled.nav`
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
+  `;
+  const NavLink = styled(Link)`
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #0a0a0a;
+    &:hover {
+      text-decoration: underline;
+    }
+  `;
+  const Logo = styled(NavLink)`
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #0a0a0a;
+    transition: all 0.2s;
+    &:hover {
+      text-decoration: none;
+      // scale: 1.1;
+      color: #14114b;
+    }
+  `;
+  const CartBtn = styled.button`
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    &:hover {
+      scale: 1.2;
+    }
+  `;
 
-  }
-`
- 
   return (
     <HeaderWrap>
-      <Logo to='/'>LOGOSHOP</Logo>
+      <Logo to="/">GadgetGalaxy</Logo>
       <Input type="text" />
       <Navigation>
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='store'>Store</NavLink>
-        <button onClick={showCart}>Cart</button>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="store">Store</NavLink>
+        <CartBtn onClick={showCart}>
+          <img src={CART_IMG} alt="Cart" />
+        </CartBtn>
       </Navigation>
-     
     </HeaderWrap>
-  )
-}
+  );
+};
