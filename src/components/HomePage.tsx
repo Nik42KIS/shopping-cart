@@ -23,32 +23,39 @@ export const HomePage = () => {
 
   }
   span{
-    font-size: 1.1rem;
+    display:block;
+    margin-top:15px;
+    font-size: 1.2rem;
+    font-weight:bold;
   }
-  
+  a{
+    display:block;
+    font-size:1.2rem;
+    text-align:center;
+    width:130px;
+    padding:10px;
+    border: 1px solid black;
+    border-radius:14px;
+    cursor: pointer;
+    margin-top:30px;
+    text-decoration:none;
+    background-color: #101010;
+    color: #fdfdfd;
+    &:hover{
+      background-color:#1b1b1b;
+    }
+  }
   `
 
-  const LinkToShop = styled.a`
-  display:block;
-  font-size:1.2rem;
-  text-align:center;
-  width:130px;
-  padding:10px;
-  border: 1px solid black;
-  border-radius:8px;
-  cursor: pointer;
-  margin-top:30px;
-  text-decoration:none;
-  background-color: #ebebeb;
-  `
+ 
 
   return (
     <HomeWrap>
         <div>
           <h1>Best In Computer <br /> Collection<br /> For You</h1>
-          <span>We craft the, we wont say the best,<br />But through 70 years of experience in the industry</span>
           <hr />
-          <LinkToShop href='store'>Pre-order Now</LinkToShop>
+          <span>We craft the, we wont say the best,<br />But through 70 years of experience in the industry</span>
+          <Link to='store'>Pre-order Now</Link>
         </div>
         <img src="https://media.istockphoto.com/id/1304220446/vector/laptop-tablet-phone-devices.jpg?s=612x612&w=0&k=20&c=edikHqWV2JO9ZvVsBTeKTdrqlyx0KPIyQIKAkpCt_18=" alt="main image" />
     </HomeWrap>
