@@ -28,7 +28,7 @@ const ProductItem = styled.li`
   list-style-type: none;
   transition: all 0.2s;
   &:hover{
-    box-shadow: 0 0 7px black;
+    box-shadow: 0 0 5px black;
   }
   img {
     height: 250px;

@@ -15,34 +15,40 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice}: Car
     top: 0;
     left: 0;
     display: flex;
-    /* justify-content: flex-end; */
-    align-items:flex-end;
-    flex-direction:column;
+    justify-content:flex-end;
 
-    div {
+
+    >div {
       height: 100vh;
       background-color: #fdfdfd;
+      display:flex;
+      justify-content:space-between;
+      flex-direction:column;
       width: 640px;
-      overflow: auto;
+      overflow:auto;
+      /* position:relative; */
+     
     }
   `;
   const CartList = styled.ul`
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 7px;
+    padding-bottom:6.4rem;
   `;
   const CartListItem = styled.li`
-    margin: 10px;
+    /* margin-top: 10px; */
     display: grid;
     grid-template-columns: 1fr 350px;
-    background-color: #ffb8b8;
-    border-radius: 10px;
+    background-color: #f1f1f1;
     padding: 10px;
     list-style-type: none;
+    
     img {
       height: 175px;
       max-width: 220px;
       margin: 0 auto;
+      border-radius:10px;
     }
   `;
   const ItemInfo = styled.span`
@@ -50,11 +56,11 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice}: Car
       font-size: 1.3rem;
     }
     p {
-      font-size: 1.6rem;
+      font-size: 2.2rem;
       margin: 12px 0;
       font-style: italic;
       font-weight: bold;
-      color: #006d24;
+      color: #000000;
     }
     input {
       height: 30px;
@@ -66,7 +72,60 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice}: Car
     }
   `;
   const TotalPrice = styled.div`
-  height:150px;
+  box-sizing: border-box;
+  width: 620px;
+  padding:2rem;
+  gap:20px;
+  position:fixed;
+  right:0;
+  bottom:0;
+ background-color:#ffffff;
+ display:flex;
+ align-items:center;
+ span{
+  font-size:1.8rem;
+  font-weight:bold;
+ }
+  `
+
+  const CountItem = styled.div`
+  width:250px;
+  button{
+    height:40px;
+    width:40px;
+    border-radius:50%;
+    background-color:#343434;
+    color: #fdfdfd;
+    text-align:center;
+    font-size:1.6rem;
+    cursor:pointer;
+    border:none;
+    &:hover{
+      background-color:#1a1a1a;
+    }
+  }
+  span{
+    padding:5px 30px;
+    margin:15px;
+    font-size:2rem;
+    background-color:#fdfdfd;
+  }
+  `
+  const OrderBtn = styled.button`
+    font-size:1.2rem;
+    text-align:center;
+    width:130px;
+    padding:10px;
+    border: 1px solid black;
+    border-radius:14px;
+    cursor: pointer;
+    text-decoration:none;
+
+    background-color: #101010;
+    color: #fdfdfd;
+    &:hover{
+      background-color:#1b1b1b;
+    }
   `
   function incrementCount(event: React.MouseEvent) {
     const target = event.target as HTMLButtonElement;
@@ -120,12 +179,12 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice}: Car
                   <img src={item.image} alt="" />
                   <ItemInfo>
                     <h2>{item.title}</h2>
-                    <p>{item.price}$</p>
-                    <span>
+                    <p>${item.price}</p>
+                    <CountItem>
                       <button onClick={(e) => incrementCount(e)}>+</button>
-                      <input  defaultValue={item.count} />
+                      <span>{item.count}</span>
                       <button onClick={(e)=>decrementCount(e)}>-</button>
-                    </span>
+                    </CountItem>
                   </ItemInfo>
                 </CartListItem>
               );
@@ -134,7 +193,12 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive,totalPrice}: Car
           : <div>Cart is empty</div>
           }
         </CartList>
-        {cartItems && <TotalPrice>Total price: {totalPrice}</TotalPrice>}
+        {
+        cartItems && <TotalPrice>
+          <span>Total price: ${totalPrice}</span>
+          <OrderBtn>Pay</OrderBtn>
+          </TotalPrice>
+        }
       </div>
       
     </CartWrapper>
