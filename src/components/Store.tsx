@@ -6,8 +6,9 @@ import styled from 'styled-components';
 export const ProductList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+  row-gap:20px;
 `;
 const Loading = styled.div`
     height:700px;
@@ -18,13 +19,21 @@ const Loading = styled.div`
 const ProductItem = styled.li`
   height: 400px;
   width: 400px;
+  border:2px solid grey;
+  border-radius:8px;
+  display:grid;
+  justify-items:center;
   list-style-type: none;
   img {
     height: 250px;
   }
+  div{
+    background-color: #f3f3f3;
+    width:100%;
+  }
 `
 const StoreWrap = styled.section`
-    
+    margin:45px;
 `
 interface StoreProps {
   items: Item[];
@@ -85,9 +94,12 @@ export const Store = ({
             return (
               <ProductItem key={item.id} id={item.id.toString()}>
                 <img src={item.image} alt="" />
-                <p>{item.title}</p>
-                <p>{item.price}</p>
+                <div>
+                  <p>{item.title}</p>
+                <p>${item.price}</p>
                 <button onClick={(e) => addToCart(e)}>Add to Cart</button>
+                </div>
+                
               </ProductItem>
             );
           })}
