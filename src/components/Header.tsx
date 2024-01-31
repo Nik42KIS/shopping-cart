@@ -12,6 +12,7 @@ export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
   };
 
   const HeaderWrap = styled.header`
+  box-sizing:border-box;
     padding: 0 50px;
     height: 80px;
     display: flex;
@@ -19,6 +20,9 @@ export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
     align-items: center;
     font-size: 1.5em;
     text-align: center;
+    background-color:white;
+    /* width:100vw;
+    position:sticky; */
   `;
   const Input = styled.input`
     width: 400px;

@@ -17,6 +17,10 @@ export interface CartProps {
     totalPrice:number;
   // setCountItems:React.Dispatch<React.SetStateAction<number>>;
 }
+const AppContainer = styled.div`
+  margin:0;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+`
 
 function App({ cartItems, setCartItems, isCartActive, setIsCartActive, recountPrice,totalPrice }: CartProps) {
 
@@ -28,7 +32,7 @@ function App({ cartItems, setCartItems, isCartActive, setIsCartActive, recountPr
   // `
 
   return (
-    <>
+    <AppContainer>
       <Header 
        isCartActive={isCartActive}
         setIsCartActive={setIsCartActive}
@@ -43,7 +47,7 @@ function App({ cartItems, setCartItems, isCartActive, setIsCartActive, recountPr
         cartItems={cartItems}
         setCartItems={setCartItems}
       />}
-    </>
+    </AppContainer>
   );
 }
 

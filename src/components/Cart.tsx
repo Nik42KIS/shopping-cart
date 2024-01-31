@@ -2,6 +2,7 @@ import React from 'react';
 import { CartProps } from '../App';
 import { CartItem, Item } from './Router';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: CartProps) => {
   const CartWrapper = styled.div`
@@ -135,7 +136,7 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: C
       width: 300px;
       margin-bottom: 20px;
     }
-    button {
+    a {
       width: 260px;
       height: 40px;
       border: 1px solid black;
@@ -146,6 +147,8 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: C
       font-size: 1.6rem;
       cursor: pointer;
       transition: ease-in-out 0.2s;
+      text-decoration:none;
+      padding-top:6px;
       &:hover {
         background-color: #1a1a1a;
         color: #fdfdfd;
@@ -202,7 +205,7 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: C
                     <h2>{item.title}</h2>
                     <p>${item.price}</p>
                     <CountItem>
-                      <button onClick={(e) => incrementCount(e)}>+</button>
+                      <button  onClick={(e) => incrementCount(e)}>+</button>
                       <span>{item.count}</span>
                       <button onClick={(e) => decrementCount(e)}>-</button>
                     </CountItem>
@@ -213,7 +216,7 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: C
           ) : (
             <EmptyCart>
               <span>Cart is empty</span>
-              <button onClick={() => setIsCartActive(false)}>To Store </button>
+              <Link  to='store' onClick={() => setIsCartActive(false)}>To Store </Link>
             </EmptyCart>
           )}
         </CartList>
