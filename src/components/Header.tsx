@@ -12,7 +12,11 @@ export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
   };
 
   const HeaderWrap = styled.header`
-  box-sizing:border-box;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     padding: 0 50px;
     height: 80px;
     display: flex;
@@ -20,9 +24,7 @@ export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
     align-items: center;
     font-size: 1.5em;
     text-align: center;
-    background-color:white;
-    /* width:100vw;
-    position:sticky; */
+    background-color: white;
   `;
   const Input = styled.input`
     width: 400px;
@@ -46,6 +48,7 @@ export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
     text-decoration: none;
     font-size: 1.8rem;
     color: #0a0a0a;
+    transition: all 2s;
     &:hover {
       text-decoration: underline;
     }
@@ -54,7 +57,7 @@ export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
     font-size: 2.3rem;
     font-weight: bold;
     color: #0a0a0a;
-    transition: all 0.2s;
+
     &:hover {
       text-decoration: none;
       // scale: 1.1;
@@ -66,6 +69,7 @@ export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
     border: none;
     cursor: pointer;
     border-radius: 12px;
+    transition: all 0.2s;
     &:hover {
       scale: 1.2;
     }

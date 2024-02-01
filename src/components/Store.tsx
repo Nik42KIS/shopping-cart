@@ -56,7 +56,8 @@ const ProductItem = styled.li`
   }
 `
 const StoreWrap = styled.section`
-    margin:45px;
+
+    margin:125px 45px 45px 45px;
 `
 const AddCartBtn = styled.button`
   padding:7px;

@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import GH_LOGO from '../assets/icons/github.png'
+
 export const Footer = () => {
 
   const Footer = styled.footer`
@@ -13,16 +15,25 @@ export const Footer = () => {
     a{
       text-decoration:none;
       color: #fdfdfd;
+display: flex;
+align-items:center;
+      img{
+        height:40px;
+      }
     }
     a:hover{
       text-decoration:underline;
     }
   `
-
+  
   return (
     <Footer>
      
-         <a href="https://github.com/Nik42KIS">GitHub</a>
+         <a href="https://github.com/Nik42KIS">
+
+         <img src={GH_LOGO} />
+         <span>GitHub</span>
+         </a>
 
     </Footer>
   )
