@@ -9,7 +9,7 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: C
     position: fixed;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
     top: 0;
     left: 0;
     display: flex;
@@ -31,7 +31,6 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: C
     flex-direction: column;
     /* gap: 7px; */
     padding-bottom: 6.4rem;
-    
   `;
   const CartListItem = styled.li`
     /* margin-top: 10px; */
@@ -128,7 +127,6 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: C
   `;
   const EmptyCart = styled.div`
     margin: 300px 200px;
-
     display: flex;
     flex-direction: column;
     span {
@@ -146,9 +144,9 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: C
       text-align: center;
       font-size: 1.6rem;
       cursor: pointer;
-      transition: ease-in-out 0.2s;
-      text-decoration:none;
-      padding-top:6px;
+      transition: ease-in-out 0.15s;
+      text-decoration: none;
+      padding-top: 6px;
       &:hover {
         background-color: #1a1a1a;
         color: #fdfdfd;
@@ -205,7 +203,7 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: C
                     <h2>{item.title}</h2>
                     <p>${item.price}</p>
                     <CountItem>
-                      <button  onClick={(e) => incrementCount(e)}>+</button>
+                      <button onClick={(e) => incrementCount(e)}>+</button>
                       <span>{item.count}</span>
                       <button onClick={(e) => decrementCount(e)}>-</button>
                     </CountItem>
@@ -216,7 +214,9 @@ export const Cart = ({ cartItems, setCartItems, setIsCartActive, totalPrice }: C
           ) : (
             <EmptyCart>
               <span>Cart is empty</span>
-              <Link  to='store' onClick={() => setIsCartActive(false)}>To Store </Link>
+              <Link to="store" onClick={() => setIsCartActive(false)}>
+                To Store{' '}
+              </Link>
             </EmptyCart>
           )}
         </CartList>

@@ -48,7 +48,7 @@ export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
     text-decoration: none;
     font-size: 1.8rem;
     color: #0a0a0a;
-    transition: all 2s;
+
     &:hover {
       text-decoration: underline;
     }
@@ -61,7 +61,7 @@ export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
     &:hover {
       text-decoration: none;
       // scale: 1.1;
-      color: #14114b;
+      color: #404040;
     }
   `;
   const CartBtn = styled.button`
