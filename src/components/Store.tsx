@@ -98,7 +98,7 @@ export const Store = ({ items, setItems, cartItems, setCartItems }: StoreProps) 
   const addToCart = (event: React.MouseEvent) => {
     // event.stopPropagation()
     const target = event.target as HTMLButtonElement;
-    const currentId: string | undefined = target.closest('button').parentElement?.parentElement?.id;
+    const currentId: string | undefined = target?.closest('button')?.parentElement?.parentElement?.id;
     const filteredElem: Item = items.filter((item: Item) => item.id === Number(currentId))[0];
 
     const tempArr = [...cartItems];

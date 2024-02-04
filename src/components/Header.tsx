@@ -6,7 +6,7 @@ interface HeaderProps {
   setIsCartActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
+export const Header = ({ setIsCartActive }: HeaderProps) => {
   const showCart = () => {
     setIsCartActive(true);
   };
@@ -60,7 +60,6 @@ export const Header = ({ isCartActive, setIsCartActive }: HeaderProps) => {
 
     &:hover {
       text-decoration: none;
-      // scale: 1.1;
       color: #404040;
     }
   `;
